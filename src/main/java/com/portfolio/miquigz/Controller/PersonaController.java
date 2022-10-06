@@ -38,7 +38,7 @@ public class PersonaController {
     }
     
     //Editar persona, {id} :id
-    @PutMapping("personas/editar/:id")
+    @PutMapping("personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id, //ID a ser cambiada/editada
             @RequestParam("name") String newName,//dato a cambiar por la variable newName
             @RequestParam("lastName") String newLastName,
