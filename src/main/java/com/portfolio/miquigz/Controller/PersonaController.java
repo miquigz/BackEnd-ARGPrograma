@@ -4,17 +4,11 @@ package com.portfolio.miquigz.Controller;
 import com.portfolio.miquigz.Interface.InterfacePersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.portfolio.miquigz.Entity.Persona;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200") //haremos llamados desde esta URL (Angular, modo desarrollo)
 public class PersonaController {
     @Autowired InterfacePersonaService ipersonaService;
 
@@ -51,5 +45,9 @@ public class PersonaController {
         ipersonaService.savePersona(persona); //guardamos la variable persona, (con los nuevos valores).
         return persona;
     }
-    
+
+    @GetMapping("personas/traer/{id}")
+    public Persona getPersona(@PathVariable Long id){
+        return ipersonaService.findPersona(id);
+    }
 }
