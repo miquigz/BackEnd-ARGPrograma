@@ -24,7 +24,7 @@ public class JwtProvider {//genera el token + metdos de validacion
         return Jwts.builder().setSubject(mainUser.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
-                .signWith(SignatureAlgorithm.ES512, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 
